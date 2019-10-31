@@ -1,4 +1,4 @@
-
+<!-- 
 ## Travel Guide
 
 - This is a react native app that helps travelling tourists locate places such as hotels, eating places etc
@@ -16,4 +16,4 @@
 ### How to contribute
 - Submit all updates to the submission branch
 
-
+ -->
