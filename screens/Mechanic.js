@@ -6,7 +6,8 @@ import {
   View,
   Keyboard,
   TouchableHighlight,
-  TouchableOpacity
+  TouchableOpacity,
+  ActivityIndicator
 } from "react-native";
 import MapView, { Polyline, Marker } from "react-native-maps";
 import apiKey from "../google_api_key";
@@ -22,7 +23,8 @@ export default class Mechanic extends Component {
       longitude: 0,
       destination: "",
       predictions: [],
-      pointCoords: []
+      pointCoords: [],
+      lookingForMotorists: false
     };
 
   }
@@ -69,8 +71,10 @@ export default class Mechanic extends Component {
   }
 
   
-  async lookForMechanics(){
-
+  async lookForMotorists(){
+      this.setState({
+        lookingForMotorists: true
+      })
   }
   render() {
     let marker = null;
@@ -105,9 +109,12 @@ export default class Mechanic extends Component {
           />
           {marker}
         </MapView>
-        <TouchableOpacity style = {styles.bottomButton} onPress = {() => this.lookForMechanics()}>
+        <TouchableOpacity style = {styles.bottomButton} onPress = {() => this.lookForMotorists()}>
           <View>
             <Text style = {styles.bottomButtonText}>Find Motorist</Text>
+            { this.state.lookingForMotorists &&
+            <ActivityIndicator animating={true} size="large"/>
+}
           </View>
         </TouchableOpacity>
       </View>
